@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Add quiz {% endblock %}
+
+{% block heading %} Term {{term.term_number}} | Create new quiz {% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-xl-8">
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-paper mr-1"></i>
+                Quiz information
+            </div>
+            <div class="card-body">
+              Topic:
+              <input class="form-control form-control-sm">
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col">
+                <a href="{% url 'index' %}" class="btn btn-success btn-sm">Save</a>
+                <a href="{% url 'index' %}" class="btn btn-primary btn-sm">Back</a>
+            </div>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}

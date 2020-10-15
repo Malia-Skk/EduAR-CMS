@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Terms {% endblock %}
+
+{% block heading %} Term {{term.term_number}} content {% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-xl-8">
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-paper mr-1"></i>
+                Quizzes
+            </div>
+            <div class="card-body">
+                {% if quizzes %}
+                <table style="width:100%">
+                    <tr>
+                      <th>Topic</th>
+                      <th>Date created</th>
+                      <th></th>
+                    </tr>
+                    {% for quiz in quizzes %}
+                    <tr>
+                      <td>{{quiz.title}}</td>
+                      <td>{{quiz.created_at}}</td>
+                      <td><a href="#">Open</a></td>
+                    </tr>
+                    {% endfor %}
+                  </table>
+                {% else %}
+                No quizes available.
+                {% endif %}
+                <br>
+                <br>
+                <a href="{% url 'create_quiz' term.term_number %}">Add a quiz</a>
+            </div>
+            
+        </div>
+        <a href="{% url 'index' %}" class="btn btn-primary btn-sm">Back</a>
+    </div>
+</div>
+{% endblock %}
