@@ -3,6 +3,11 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import Term, Quiz, Question
+from django.http import JsonResponse
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .serializers import TermSerializer
+from rest_framework import generics
 
 # Create your views here.
 
@@ -56,3 +61,17 @@ def view_quiz(request, id):
     }
 
     return render(request, 'view_quiz.html', context)
+
+
+@api_view(['GET'])
+def apiOverview(request):
+    api_urls = {
+        'List':'/task-list'
+    }
+    return  Response(api_urls)
+
+@api_view(['GET'])
+def term_list(request):
+    terms = Term.objects.all()
+    serializer = TermSerializer(terms, many=True)
+    return Response(serializer.data)
