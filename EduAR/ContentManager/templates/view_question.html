@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} View question {% endblock %}
+
+{% block heading %} View question {% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-xl-8">
+        <div class="card mb-4">
+            <form method="POST" action="{% url 'save_question' question.id %}">
+                {% csrf_token %}
+            <div class="card-header">
+                <i class="fas fa-paper mr-1"></i>
+                Question<input type="text" name="text" value="{{question.text}}" class="form-control form-control-sm">
+            </div>
+            <div class="card-body">
+                
+                Option 1
+                <input required name="option1" type="text" class="form-control form-control-sm" value="{{question.option1}}">
+                <br>
+                Option 2
+                <input required name="option2" type="text" class="form-control form-control-sm" value="{{question.option2}}">
+                <br>
+                Option 3
+                <input required name="option3" type="text" class="form-control form-control-sm" value="{{question.option3}}">
+                <br>
+                Option 4
+                <input required name="option4" type="text" class="form-control form-control-sm" value="{{question.option4}}">
+                <br>
+                Correct answer
+                <select class="form-control form-control-sm">
+                    <option>{{question.correct_answer}}</option>
+                    <option>{{question.option1}}</option>
+                    <option>{{question.option2}}</option>
+                    <option>{{question.option3}}</option>
+                    <option>{{question.option4}}</option>
+                </select>
+                <br>
+            </div>
+            
+        </div>
+        <button type="submit" class="btn btn-success btn-sm">Save</button>
+        <a href="#" class="btn btn-danger btn-sm">Delete</a>
+        <a href="{% url 'index' %}" class="btn btn-primary btn-sm">Back</a>
+    </form>
+    </div>
+{% endblock %}

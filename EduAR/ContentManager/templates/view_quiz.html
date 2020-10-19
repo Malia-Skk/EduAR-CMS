@@ -6,5 +6,33 @@
 {% block heading %} Quiz title | {{quiz.title}} content {% endblock %}
 
 {% block content %}
-
+<div class="row">
+    <div class="col-xl-8">
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-paper mr-1"></i>
+                Questions
+            </div>
+            <div class="card-body">
+                {% if questions %}
+                <table style="width:100%">
+                    
+                    {% for question in questions %}
+                    <tr>
+                      <td>{{question.text}}</td>
+                      <td><a href="{% url 'view_question' question.id %}">Open</a></td>
+                    </tr>
+                    {% endfor %}
+                  </table>
+                {% else %}
+                No questions available.
+                {% endif %}
+                <br>
+                <br>
+                <a href="{% url 'create_quiz' term.term_number %}">Add a question</a>
+            </div>
+            
+        </div>
+        <a href="{% url 'index' %}" class="btn btn-primary btn-sm">Back</a>
+    </div>
 {% endblock %}

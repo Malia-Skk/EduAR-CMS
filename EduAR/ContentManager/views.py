@@ -42,9 +42,12 @@ def view_term(request, term_number):
 
 def create_quiz(request, term_number):
     if request.method == 'POST':
-        #create quiz
-        #View the quiz you have created, view_quiz(request, quiz.id)
-        pass
+        title = request.POST['title']
+        term = Term.objects.get(term_number=term_number)
+        new_quiz = Quiz(term=term, title=title)
+        new_quiz.save()
+        return view_quiz(request, new_quiz.id)
+
     term = Term.objects.get(term_number=term_number)
     context = {'term':term}
     return render(request, 'create_quiz.html', context)
@@ -59,8 +62,31 @@ def view_quiz(request, id):
         'term':term,
         'questions':questions
     }
-
     return render(request, 'view_quiz.html', context)
+
+def delete_quiz(request,id):
+    pass
+
+def view_question(request, id):
+    question = Question.objects.get(id=id)
+    context = {
+        'question':question
+    }
+    return render(request, 'view_question.html', context)
+
+def save_question(request,id):
+    question = Question.objects.get(id=id)
+    if request.method == 'POST':
+        title = request.POST['text']
+        option1 = request.POST['option1']
+        option2 = request.POST['option2']
+        option3 = request.POST['option3']
+        option4 = request.POST['option4']
+        return view_quiz(request,question.quiz.id)
+    return view_quiz(request,question.quiz.id)
+
+def delete_question(request):
+    pass
 
 
 @api_view(['GET'])

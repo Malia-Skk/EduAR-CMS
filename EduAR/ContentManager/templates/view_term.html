@@ -25,7 +25,7 @@
                     <tr>
                       <td>{{quiz.title}}</td>
                       <td>{{quiz.created_at}}</td>
-                      <td><a href="#">Open</a></td>
+                      <td><a href="{% url 'view_quiz' quiz.id %}">Open</a></td>
                     </tr>
                     {% endfor %}
                   </table>
