@@ -88,13 +88,13 @@ def save_question(request,id):
 def delete_question(request):
     pass
 
-
-@api_view(['GET'])
-def apiOverview(request):
-    api_urls = {
-        'List':'/task-list'
-    }
-    return  Response(api_urls)
+#EXAMPLE
+# @api_view(['GET'])
+# def apiOverview(request):
+#     api_urls = {
+#         'List':'/task-list'
+#     }
+#     return  Response(api_urls)
 
 @api_view(['GET'])
 def term_list(request):
