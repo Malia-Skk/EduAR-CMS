@@ -1,5 +1,7 @@
 from rest_framework import serializers
-from .models import Term, Quiz, Question
+from .models import Term, Quiz, Question, QuizQuestions
+
+
 
 class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,3 +19,8 @@ class TermSerializer(serializers.ModelSerializer):
     class Meta:
         model = Term
         fields = "__all__"
+
+class QuizQuestionsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = QuizQuestions
+        fields = '__all__'
