@@ -41,6 +41,8 @@ INSTALLED_APPS = [
 
     'ContentManager',
     'rest_framework',
+    'django_better_admin_arrayfield',
+    'tox',
 ]
 
 MIDDLEWARE = [
@@ -79,12 +81,8 @@ WSGI_APPLICATION = 'EduAR.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'EduAR_db',
-        'USER': 'postgres',
-        'PASSWORD': '12345',
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': 'djongo',      
+        'NAME': 'eduAR',      
     }
 }
 
